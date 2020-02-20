@@ -1,20 +1,62 @@
-body{
+body {
     display: flex;
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 30px;
+    font-size: 18px;
+    color: #1e1e1e;
     background: repeating-linear-gradient(90deg, #efeded, #efeded 10px, whitesmoke 10px, whitesmoke 20px);
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     margin-top: 100px;
     background-color: whitesmoke;
     padding: 50px;
     border: 1px solid #7d7d7d;
 }
-button{
+
+#btn, label, input, #resultRound {
+    width: 500px;
+    height: 30px;
+    padding: 0;
+    border: 0;
+    color: #1e1e1e;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+label, #resultRound, .selections, #round {
+    display: block;
+    margin-bottom: 12.5px;
+}
+
+label, .selection, #round {
+    margin-top: 12.5px;
+}
+
+#btn, input {
     height: 50px;
     background-color: #7d7d7d;
-    border: 0;
+}
+
+input {
+    background-color: #1e1e1e;
+    color: whitesmoke;
+    padding: 0 10px;
+}
+
+.selection {
+    display: flex;
+    text-align: left;
+}
+
+#playerSelection, #computerSelection {
+    width: 250px;
+}
+
+#computerSelection {
+    text-align: right;
 }
