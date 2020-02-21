@@ -10,7 +10,8 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 552px;
+    -webkit-width: 532px;
+    width: 602px;
     align-items: center;
     text-align: center;
     margin-top: 50px;
@@ -20,7 +21,8 @@ body {
 }
 
 #btn, #label, input, #resultRound {
-    width: 450px;
+    -webkit-width: 430px;
+    width: 500px;
     height: 30px;
     padding: 0;
     border: 0;
@@ -62,6 +64,11 @@ h1 {
     background-color: #a0a0a0;
     padding: 0 10px;
     
+}
+
+input:-internal-autofill-selected {
+    background-color: #a0a0a0;
+    color: #1e1e1e;
 }
 
 .selections {
