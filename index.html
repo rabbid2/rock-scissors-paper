@@ -8,13 +8,13 @@
     </head>
     <body>
         <div class="container">
-            <span id="resultRound"></span>
+            <span id="label"><h1>Камень, ножницы, бумага?</h1></span>
             <img src="src/3-7.jpg"><br>
             <form action="" method="post" name="form" id="form">
-                <label for="playerInput"><h1>Камень, ножницы, бумага?</h1></label>
                 <input type="text" name="playerInput" placeholder="Ведите ответ" id="playerInput">
                 <input type="button" name="submit" onclick="clickButton(document.getElementById('form'))" value="Начать игру!" id="btn">
             </form>
+            <span id="resultRound"></span>
             <div class="selections">
                 <span id="playerSelection"></span>
                 <span id="computerSelection"></span>

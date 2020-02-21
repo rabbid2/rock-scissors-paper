@@ -19,7 +19,7 @@ body {
     border: 1px solid #7d7d7d;
 }
 
-#btn, label, input, #resultRound {
+#btn, #label, input, #resultRound {
     width: 500px;
     height: 30px;
     padding: 0;
@@ -28,23 +28,26 @@ body {
     font-size: 18px;
 }
 
-label, #resultRound, .selections, #round {
+#label, .selections, #round {
     display: block;
-    margin-bottom: 12.5px;
+    margin-bottom: 20px;
 }
 
-label, #round {
-    margin-top: 12.5px;
+#resultRound {
+    margin-top: 20px;
 }
 
 h1 {
     display: inline-block;
     vertical-align: middle;
+    font-size: 22px;
+    font-weight: 800;
 }
 
 #btn{
     height: 100px;
     border: 1px solid #7d7d7d;
+
     background-color: #7d7d7d;
 }
 
@@ -55,10 +58,10 @@ h1 {
 #playerInput {
     display: none;
     height: 50px;
-    background-color: #1e1e1e;
-    color: whitesmoke;
+    
+    background-color: #a0a0a0;
     padding: 0 10px;
-    border: 0;
+    
 }
 
 .selections {
