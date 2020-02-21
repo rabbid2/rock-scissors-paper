@@ -10,8 +10,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    -webkit-width: 532px;
-    width: 602px;
+    width: 552px;
     align-items: center;
     text-align: center;
     margin-top: 50px;
@@ -21,8 +20,7 @@ body {
 }
 
 #btn, #label, input, #resultRound {
-    -webkit-width: 430px;
-    width: 500px;
+    width: 450px;
     height: 30px;
     padding: 0;
     border: 0;
