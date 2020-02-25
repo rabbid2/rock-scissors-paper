@@ -4,6 +4,7 @@ let resultGame = ``;
 let end = true;
 let playerScore = 0;
 let computerScore = 0;
+let win=false;
 
 function clickButton(form) {
     if (end) {
@@ -41,10 +42,12 @@ function game() {
 function createResultGame() {
     if (playerScore === 3) {
         end = true;
+        win = true;
         resultGame = `Поздравляю с победой!`;
         createOutput(resultGame);
     } else if (computerScore === 3) {
         end = true;
+        win = false;
         resultGame = `Поражение :(`;
         createOutput(resultGame);
     };
@@ -92,21 +95,21 @@ function createEnding(str) {
     return (str === `бумага`) ? ` бьют бумагу.` : (` бьёт ` + str + `.`);
 }
 
-function generateOutputCode(param) {
-    return "let " + param + "Output = document.getElementById('" + param + "');" + param;
-}
-
+//Вывод результатов
 function createOutput(resultRound){
-    eval(generateOutputCode(`playerSelection`) + `Output.textContent = 'Вы: ' + ` + `playerSelection;`);
-    eval(generateOutputCode(`computerSelection`) + `Output.textContent = 'Компьютер: ' + ` + `computerSelection;`);
-    eval(generateOutputCode(`computerScore`) + `Output.textContent = 'Счет компьютера: ' + ` + `computerScore;`);
-    eval(generateOutputCode(`playerScore`) + `Output.textContent = 'Ваш счет: ' + ` + `playerScore;`);
-    let resultOutput = document.getElementById(`resultRound`);
+    document.getElementById(`playerSelection`).textContent = `Вы: ` + playerSelection;
+    document.getElementById(`computerSelection`).textContent = `Компьютер: ` + computerSelection;
+    document.getElementById(`computerScore`).textContent = `Счет компьютера: ` + computerScore;
+    document.getElementById(`playerScore`).textContent = `Ваш счет: ` + playerScore;
+
+    let resultOutput = document.getElementById(`result`);
     resultOutput.textContent = resultRound;
+
     if (end) {
-        let result = (computerScore < 3) ? `Поздравляю с победой!` : `Поражение :(`;
-        resultOutput.textContent = result;
+        resultOutput.textContent = resultGame;
+        (win) ? resultOutput.style.color = `teal` : resultOutput.style.color = `crimson`;
         changeButton(`100px`,`none`);
         document.getElementById(`btn`).value = `Начать новую игру!`;
     }
+    else resultOutput.style.color = `#1e1e1e`;
 }

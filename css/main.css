@@ -19,7 +19,7 @@ body {
     border: 1px solid #7d7d7d;
 }
 
-#btn, #label, input, #resultRound {
+#btn, #label, input, #result {
     width: 450px;
     height: 30px;
     padding: 0;
@@ -28,12 +28,12 @@ body {
     font-size: 18px;
 }
 
-#label, .selections, #round {
+#label, .selections {
     display: block;
     margin-bottom: 20px;
 }
 
-#resultRound {
+#result {
     margin-top: 20px;
 }
 
@@ -64,12 +64,18 @@ h1 {
     
 }
 
-input:-internal-autofill-selected {
-    background-color: #a0a0a0 !important;
-    color: #1e1e1e !important;
-}
+input[type="button"]::-moz-focus-inner
+    {   
+        border : 0px;
+    }
+    
+input[type="button"]:focus
+    {     
+        outline : none; 
+    }
 
 .selections {
+    width: 450px;
     display: flex;
     text-align: left;
     margin: 20px 0;
