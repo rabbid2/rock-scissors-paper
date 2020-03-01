@@ -10,7 +10,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 552px;
+    width: 492px;
     align-items: center;
     text-align: center;
     margin-top: 50px;
@@ -26,7 +26,7 @@ img {
 .btn, .new-game-btn {
     box-sizing: border-box;
     height: 100px;
-    width: 150px;
+    width: 130px;
     border: 0;
     background-color: #7d7d7d;
     color: #1e1e1e;
@@ -35,7 +35,7 @@ img {
 
 .new-game-btn, .game-btns {
     height: 100px;
-    width: 450px;
+    width: 390px;
 }
 
 .new-game-btn {
@@ -65,7 +65,7 @@ button:focus {
 }
 
 .label, .result {
-    width: 450px;
+    width: 390px;
     height: 30px;
     padding: 0;
     border: 0;
@@ -89,7 +89,7 @@ h1 {
 }
 
 .selections {
-    width: 450px;
+    width: 390px;
     display: flex;
     text-align: left;
     margin: 20px 0;
@@ -111,6 +111,7 @@ h1 {
     pointer-events: none;
     height: 0px;
     top: 452px;
+    padding: 0;
 }
 
 .win {
