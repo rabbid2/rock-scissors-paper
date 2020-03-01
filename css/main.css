@@ -20,7 +20,7 @@ body {
 }
 
 img {
-    height: 202px;
+    height: 175px;
 }
 
 .btn, .new-game-btn {
@@ -40,7 +40,7 @@ img {
 
 .new-game-btn {
     position: absolute;
-    top: 353px;
+    top: 326px;
     transition: all 0.3s linear;
     border: 0;
     background-color: #1e1e1e;
@@ -110,7 +110,7 @@ h1 {
 .hide {
     pointer-events: none;
     height: 0px;
-    top: 452px;
+    top: 426px;
     padding: 0;
 }
 
