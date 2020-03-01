@@ -10,7 +10,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 492px;
+    width: 534px;
     align-items: center;
     text-align: center;
     margin-top: 50px;
@@ -20,13 +20,14 @@ body {
 }
 
 img {
-    height: 175px;
+    width: 432px;
+    height: 194px;
 }
 
 .btn, .new-game-btn {
     box-sizing: border-box;
     height: 100px;
-    width: 130px;
+    width: 144px;
     border: 0;
     background-color: #7d7d7d;
     color: #1e1e1e;
@@ -35,12 +36,12 @@ img {
 
 .new-game-btn, .game-btns {
     height: 100px;
-    width: 390px;
+    width: 432px;
 }
 
 .new-game-btn {
     position: absolute;
-    top: 326px;
+    top: 344px;
     transition: all 0.3s linear;
     border: 0;
     background-color: #1e1e1e;
@@ -65,7 +66,7 @@ button:focus {
 }
 
 .label, .result {
-    width: 390px;
+    width: 432px;
     height: 30px;
     padding: 0;
     border: 0;
@@ -89,7 +90,7 @@ h1 {
 }
 
 .selections {
-    width: 390px;
+    width: 432px;
     display: flex;
     text-align: left;
     margin: 20px 0;
@@ -110,7 +111,7 @@ h1 {
 .hide {
     pointer-events: none;
     height: 0px;
-    top: 426px;
+    top: 444px;
     padding: 0;
 }
 
