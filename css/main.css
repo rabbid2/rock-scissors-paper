@@ -10,7 +10,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    width: 534px;
+    width: 567px;
     align-items: center;
     text-align: center;
     margin-top: 50px;
@@ -20,14 +20,14 @@ body {
 }
 
 img {
-    width: 432px;
-    height: 194px;
+    width: 465px;
+    height: 208px;
 }
 
 .btn, .new-game-btn {
     box-sizing: border-box;
     height: 100px;
-    width: 144px;
+    width: 155px;
     border: 0;
     background-color: #7d7d7d;
     color: #1e1e1e;
@@ -36,12 +36,12 @@ img {
 
 .new-game-btn, .game-btns {
     height: 100px;
-    width: 432px;
+    width: 465px;
 }
 
 .new-game-btn {
     position: absolute;
-    top: 344px;
+    top: 359px;
     transition: all 0.3s linear;
     border: 0;
     background-color: #1e1e1e;
@@ -66,7 +66,7 @@ button:focus {
 }
 
 .label, .result {
-    width: 432px;
+    width: 465px;
     height: 30px;
     padding: 0;
     border: 0;
@@ -89,8 +89,8 @@ h1 {
     font-weight: 800;
 }
 
-.selections {
-    width: 432px;
+.selections { 
+    width: 465px;
     display: flex;
     text-align: left;
     margin: 20px 0;
@@ -111,7 +111,7 @@ h1 {
 .hide {
     pointer-events: none;
     height: 0px;
-    top: 444px;
+    top: 459px;
     padding: 0;
 }
 
