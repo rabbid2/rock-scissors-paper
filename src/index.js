@@ -1,88 +1,77 @@
-let playerSelection = ``;
-let computerSelection = ``;
-let resultGame = ``;
-let end = true;
-let playerScore = 0;
-let computerScore = 0;
-let win=false;
+const resultMessageSpan = document.createElement(`span`);
+const selectionsDiv = document.createElement(`div`);
+const computerSelectionSpan = document.createElement(`span`);
+const playerSelectionSpan = document.createElement(`span`);
+const playerScoreSpan = document.createElement(`span`);
+const computerScoreSpan = document.createElement(`span`);
 
-function clickButton(form) {
-    if (end) {
-        clearForm();
-        return;
-    }
-    playerSelection = form.playerInput.value.toLowerCase();
-    if (validateForm(playerSelection) || end) game();
-    else alert(`Неправильный ответ!`);
-}
+const container = document.querySelector(`.container`);
+const gameBtns = document.querySelector(`.game-btns`);
+const newGameBtn = document.querySelector(`.new-game-btn`);
 
-function clearForm() {
-    changeButton(`50px`,`inline-block`);
-    document.getElementById('btn').value = `Ответить`;
-    resultGame = ``;
-    computerScore = 0;
-    playerScore = 0;
-    end = false;
-    createOutput(resultGame);
-}
-
-function changeButton(height,display) {
-    document.getElementById(`playerInput`).style.display = display;
-    document.getElementById(`btn`).style.height = height;
-}
+newGameBtn.addEventListener(`click`, game);
 
 function game() {
-    computerSelection = computerPlay();
-    let resultRound = playRound(playerSelection,computerSelection);
-    createOutput(resultRound);
-    console.log(resultRound);
-    createResultGame();
+    insertOutputElements();
+    let playerScore = 0;
+    let computerScore = 0;
+    let resultGame = ``;
+
+    toogleButtons();
+    gameBtns.childNodes.forEach(btn => btn.addEventListener('click', playRound));
+    createOutput(`Игра до 5 очков`, ``, ``, playerScore, computerScore);
+
+    function playRound(e) {
+        let playerSelection = ``;
+        let computerSelection = ``;
+        let result = ``;
+
+        playerSelection = this.textContent.toLowerCase();
+        computerSelection = computerPlay();
+
+        result = createResultRound(playerSelection, computerSelection);
+        if (result.includes(`выиграли`)) ++playerScore;
+        if (result.includes(`проиграли`)) ++computerScore;
+
+        let resultGame = createResultGame(playerScore, computerScore);
+        if (resultGame) {
+            gameBtns.childNodes.forEach(btn => btn.removeEventListener(`click`, playRound));
+            toogleButtons();
+            result = resultGame;
+        }
+
+        createOutput(result, playerSelection, computerSelection, playerScore, computerScore);
+    }
 }
 
-function createResultGame() {
-    if (playerScore === 3) {
-        end = true;
-        win = true;
-        resultGame = `Поздравляю с победой!`;
-        createOutput(resultGame);
-    } else if (computerScore === 3) {
-        end = true;
-        win = false;
-        resultGame = `Поражение :(`;
-        createOutput(resultGame);
+function toogleButtons() {
+    if (newGameBtn.textContent) {
+        newGameBtn.textContent = ``;
+        newGameBtn.classList.toggle(`hide`);
+    } else {
+        newGameBtn.classList.toggle(`hide`);
+        setTimeout(() => { 
+            newGameBtn.textContent=`Начать игру!`; }, 100);
     };
 }
 
-function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) return `Ничья!`
-    let isWinVariant = checkWinVariant(playerSelection,computerSelection);
-    (isWinVariant) ? ++playerScore : ++computerScore;
-    return createResultRoundMessage(isWinVariant);
-}
-
 function computerPlay() {
-    let randomInteger = getRndInteger(1,3);
+    let randomInteger = getRndInteger(1, 3);
     if (randomInteger === 1) return `камень`;
     else if (randomInteger === 2) return `ножницы`;
     return `бумага`;
 }
 
-function getRndInteger(min,max) {
+function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function validateForm(playerSelection) {
-    return (playerSelection === `камень` || playerSelection === `ножницы` || playerSelection === `бумага`);
-}
-
-function checkWinVariant(playerSelection,computerSelection) {
-    return (playerSelection === `камень` && computerSelection === `ножницы` || 
+function createResultRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) return `Ничья!`;
+    if (playerSelection === `камень` && computerSelection === `ножницы` || 
             playerSelection === `бумага` && computerSelection === `камень` || 
-            playerSelection ===`ножницы` && computerSelection ===`бумага`);
-}
-
-function createResultRoundMessage(isWinVariant) {
-    if (isWinVariant) return `Вы выиграли раунд! ` + createCapitalLetter(playerSelection) + createEnding(computerSelection);
+            playerSelection ===`ножницы` && computerSelection ===`бумага`)
+            return `Вы выиграли раунд! ` + createCapitalLetter(playerSelection) + createEnding(computerSelection);
     return `Вы проиграли раунд! ` + createCapitalLetter(computerSelection) + createEnding(playerSelection);
 }
 
@@ -95,21 +84,42 @@ function createEnding(str) {
     return (str === `бумага`) ? ` бьют бумагу.` : (` бьёт ` + str + `.`);
 }
 
-//Вывод результатов
-function createOutput(resultRound){
-    document.getElementById(`playerSelection`).textContent = `Вы: ` + playerSelection;
-    document.getElementById(`computerSelection`).textContent = `Компьютер: ` + computerSelection;
-    document.getElementById(`computerScore`).textContent = `Счет компьютера: ` + computerScore;
-    document.getElementById(`playerScore`).textContent = `Ваш счет: ` + playerScore;
+function createResultGame(playerScore, computerScore) {
+    if (playerScore === 5) {
+        return `Поздравляю с победой! :)`;
+    } else if (computerScore === 5) {
+        return `Поражение :(`;
+    };
+}
 
-    let resultOutput = document.getElementById(`result`);
-    resultOutput.textContent = resultRound;
-
-    if (end) {
-        resultOutput.textContent = resultGame;
-        (win) ? resultOutput.style.color = `teal` : resultOutput.style.color = `crimson`;
-        changeButton(`100px`,`none`);
-        document.getElementById(`btn`).value = `Начать новую игру!`;
+function createOutput(result,playerSelection, computerSelection, playerScore, computerScore) {
+    resultMessageSpan.textContent = result;
+    if(result.includes(`:)`)) resultMessageSpan.classList.add(`win`);
+    else if(result.includes(`:(`)) resultMessageSpan.classList.add(`lose`);
+    else {
+        resultMessageSpan.classList.remove(`win`);
+        resultMessageSpan.classList.remove(`lose`);
     }
-    else resultOutput.style.color = `#1e1e1e`;
+
+    playerSelectionSpan.textContent = `Вы: ` + playerSelection;
+    computerSelectionSpan.textContent = `Компьютер: ` + computerSelection;
+    playerScoreSpan.textContent = `Ваш счет: ` + playerScore;
+    computerScoreSpan.textContent = `Счет компьютера: ` + computerScore;
+}
+
+function insertOutputElements() {
+    resultMessageSpan.classList.add(`result`);
+    selectionsDiv.classList.add(`selections`);
+    playerSelectionSpan.classList.add(`player-selection`);
+    computerSelectionSpan.classList.add(`computer-selection`);
+    computerScoreSpan.classList.add(`computer-score`);
+    playerScoreSpan.classList.add(`player-score`);
+
+    selectionsDiv.appendChild(playerSelectionSpan);
+    selectionsDiv.appendChild(computerSelectionSpan);
+    
+    container.appendChild(resultMessageSpan);
+    container.appendChild(selectionsDiv);
+    container.appendChild(computerScoreSpan);
+    container.appendChild(playerScoreSpan);
 }

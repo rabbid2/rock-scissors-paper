@@ -19,21 +19,67 @@ body {
     border: 1px solid #7d7d7d;
 }
 
-#btn, #label, input, #result {
+img {
+    height: 202px;
+}
+
+.btn, .new-game-btn {
+    box-sizing: border-box;
+    height: 100px;
+    width: 150px;
+    border: 1px solid #1e1e1e;
+    background-color: #7d7d7d;
+    color: #1e1e1e;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.new-game-btn, .game-btns {
+    height: 100px;
+    width: 450px;
+}
+
+.new-game-btn {
+    position: absolute;
+    top: 353px;
+    transition: all 0.3s linear;
+    border: 0;
+    background-color: #1e1e1e;
+    color: whitesmoke;
+}
+
+.btn:hover {
+    background-color: teal;
+    color: #1e1e1e;
+}
+
+button::-moz-focus-inner {   
+    border : 0px;
+}
+    
+button:focus {     
+    outline : none; 
+}
+
+.paper {
+    border-left: 0;
+    border-right: 0;
+}
+
+.label, .result {
     width: 450px;
     height: 30px;
     padding: 0;
     border: 0;
     color: #1e1e1e;
-    font-size: 18px;
 }
 
-#label{
+.label {
     display: block;
     margin-bottom: 20px;
 }
 
-#result {
+.result {
     margin-top: 20px;
 }
 
@@ -44,36 +90,6 @@ h1 {
     font-weight: 800;
 }
 
-#btn {
-    height: 100px;
-    border: 1px solid #7d7d7d;
-
-    background-color: #7d7d7d;
-}
-
-#btn:hover {
-    background-color: teal;
-}
-
-#playerInput {
-    display: none;
-    height: 50px;
-    
-    background-color: #a0a0a0;
-    padding: 0 10px;
-    
-}
-
-input[type="button"]::-moz-focus-inner
-    {   
-        border : 0px;
-    }
-    
-input[type="button"]:focus
-    {     
-        outline : none; 
-    }
-
 .selections {
     width: 450px;
     display: flex;
@@ -81,14 +97,30 @@ input[type="button"]:focus
     margin: 20px 0;
 }
 
-#playerSelection, #computerSelection {
+.player-selection, .computer-selection {
     width: 50%;
 }
 
-#computerSelection {
+.computer-selection {
     text-align: right;
 }
 
-#computerScore, #playerScore{
+.computer-score, .player-score {
     margin-top: 20px;
+}
+
+.hide {
+    pointer-events: none;
+    height: 0px;
+    top: 452px;
+}
+
+.win {
+    color: teal;
+    font-weight: 800;
+}
+
+.lose {
+    color:crimson;
+    font-weight: 800;
 }
